@@ -1,0 +1,56 @@
+[
+  {
+    "label": "auto exposure buffers 1",
+    "buffers": 1.0,
+    "fps": 8.593982251582224,
+    "mean": 5.128174603174603
+  },
+  {
+    "label": "auto exposure buffers 4",
+    "buffers": 4.0,
+    "fps": 16.682701704605957,
+    "mean": 5.126509121061361
+  },
+  {
+    "label": "auto exposure buffers 8",
+    "buffers": 8.0,
+    "fps": 16.682690681747744,
+    "mean": 5.1258913764510785
+  },
+  {
+    "label": "auto exposure buffers 16",
+    "buffers": 4.0,
+    "fps": 16.68272352264613,
+    "mean": 5.12606135986733
+  },
+  {
+    "label": "auto exposure buffers 4",
+    "buffers": 4.0,
+    "fps": 16.682722067832717,
+    "mean": 5.125277777777778
+  },
+  {
+    "label": "manual 3 flicker 1 buffers4",
+    "buffers": 4.0,
+    "fps": 16.682702792555034,
+    "mean": 5.0
+  },
+  {
+    "label": "manual 78 flicker 1 buffers4",
+    "buffers": 4.0,
+    "fps": 16.69947301334029,
+    "mean": 5.125107794361528
+  },
+  {
+    "label": "manual 156 flicker 1 buffers4",
+    "buffers": 4.0,
+    "fps": 16.68267102703473,
+    "mean": 5.125986733001659
+  },
+  {
+    "label": "manual 3 flicker 0 buffers4",
+    "buffers": 4.0,
+    "fps": 15.004285263293172,
+    "mean": 5.008240740740741
+  }
+]

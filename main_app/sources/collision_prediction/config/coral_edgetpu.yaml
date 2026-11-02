@@ -1,0 +1,14 @@
+extends: pi_minimal_ver1.yaml
+
+# Coral Edge TPU プロファイル (ラズパイ 5 + Coral USB Accelerator 本番)
+# 用途: Edge TPU 用にコンパイルした INT8 TFLite で TPU 推論する。
+# 前提:
+#   - フェーズ B で models/yolo11n_full_integer_quant_edgetpu.tflite を生成・転送済み
+#   - Pi 側に libedgetpu (Coral runtime) と tflite-runtime を導入済み
+# 注意: edgetpu.tflite のロード/推論は Ultralytics がファイル名から TPU delegate を
+#       自動選択する。imgsz はエクスポート時の値 (320) に固定。
+
+detector:
+  weights: models/yolo11n_full_integer_quant_edgetpu.tflite
+  device: cpu          # delegate は Ultralytics が自動選択。MPS でなければよい
+  imgsz: 320

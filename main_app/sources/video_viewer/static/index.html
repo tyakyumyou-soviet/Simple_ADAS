@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>録画ビューア</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- 画面1: フォルダ選択 -->
+  <div id="screen-home" class="screen">
+    <div class="header">
+      <div class="header-logo">
+        <div class="logo-mark">▶</div>
+        <span class="logo-text">録画ビューア</span>
+      </div>
+    </div>
+    <div class="scroll-area">
+      <div class="home-body">
+        <div class="section-label">フォルダ</div>
+        <div id="folder-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 画面2: 動画一覧 -->
+  <div id="screen-list" class="screen">
+    <div class="header">
+      <button id="btn-back-list" class="btn-back" aria-label="戻る">‹</button>
+      <span id="folder-title" class="header-title"></span>
+    </div>
+    <div class="scroll-area">
+      <div id="video-list" class="list-body"></div>
+    </div>
+  </div>
+
+  <!-- 画面3: 動画再生 -->
+  <div id="screen-player" class="screen">
+    <div class="header">
+      <button id="btn-back-player" class="btn-back" aria-label="戻る">‹</button>
+      <span id="player-title" class="header-title"></span>
+    </div>
+
+    <div class="player-area">
+      <video
+        id="player-video"
+        preload="none"
+        playsinline
+        webkit-playsinline
+      ></video>
+    </div>
+
+    <div class="video-controls">
+      <div class="seek-wrap">
+        <input id="seek-bar" type="range" class="seek-bar" min="0" max="100" value="0" step="0.1">
+      </div>
+      <div class="time-row">
+        <span id="time-current">0:00</span>
+        <span id="time-total">0:00</span>
+      </div>
+      <div class="ctrl-row">
+        <button id="btn-rewind" class="btn-ctrl" aria-label="10秒戻る">
+          ↺<span class="skip-label">10</span>
+        </button>
+        <button id="btn-play-pause" class="btn-ctrl primary" aria-label="再生/一時停止">▶</button>
+        <button id="btn-forward" class="btn-ctrl" aria-label="10秒進む">
+          ↻<span class="skip-label">10</span>
+        </button>
+        <button id="btn-fullscreen" class="btn-ctrl" aria-label="全画面">⤢</button>
+      </div>
+    </div>
+
+    <div class="video-info">
+      <div id="player-folder-tag" class="video-info-tag">● フォルダ名</div>
+      <div id="player-video-name" class="video-info-name"></div>
+      <div id="player-video-meta" class="video-info-meta"></div>
+      <a id="player-download" class="btn-download" href="#" download>
+        ⬇&nbsp; ダウンロード
+      </a>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

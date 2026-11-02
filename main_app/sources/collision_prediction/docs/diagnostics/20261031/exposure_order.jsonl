@@ -1,0 +1,8 @@
+{"label": "auto baseline", "fps": 8.4696635965951, "mean": 5.122483660130719, "frames": 34}
+{"label": "forced manual exposure 1250x100us", "fps": 8.602724947182585, "mean": 5.125587301587301, "frames": 35}
+{"label": "forced manual exposure 3x100us", "fps": 8.46979510664977, "mean": 5.125130718954249, "frames": 34}
+{"label": "forced manual exposure 30x100us", "fps": 8.465665183721745, "mean": 5.124539682539681, "frames": 35}
+{"label": "forced manual exposure 333x100us", "fps": 8.47842961293621, "mean": 5.128978758169935, "frames": 34}
+{"label": "forced manual exposure 100x100us", "fps": 8.60276280404669, "mean": 5.125912698412698, "frames": 35}
+{"label": "auto exposure fixed white balance", "fps": 8.469754662153516, "mean": 5.124820261437911, "frames": 34}
+{"label": "reopened manual minimum exposure no flicker", "fps": 7.497021209208555, "mean": 5.009722222222223, "frames": 30}

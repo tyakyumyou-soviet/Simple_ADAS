@@ -1,0 +1,19 @@
+extends: realtime_cpu.yaml
+
+detector:
+  enabled: false
+
+segmenter:
+  enabled: false
+
+depth:
+  enabled: false
+
+ui:
+  max_process_width: 720
+  display_every_n_frames: 1
+  enable_detection: false
+  enable_lanes: false
+  enable_signs: false
+  enable_risk: false
+  show_debug_mask: false

@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+models/*
+data/videos/*
+data/annotations/*
+outputs/logs/*
+outputs/recordings/*
+outputs/ultralytics/*
+!.gitkeep
+.DS_Store
+.claude/
+config/custom.yaml
+config/custom2.yaml
+
+# Ultralytics INT8 export の自動生成キャリブデータ
+calibration_image_sample_data_*.npy
+
+# Ultralytics export 時の自動 DL キャリブデータ
+datasets/

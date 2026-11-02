@@ -1,0 +1,95 @@
+input:
+  source_type: file
+  path: data/videos/test.mp4
+  camera_index: 0
+
+detector:
+  weights: models/yolo11n.pt
+  device: auto
+  conf: 0.35
+  iou: 0.5
+  imgsz: 640
+  max_det: 100
+  classes: [0, 1, 2, 3, 5, 7]
+  enabled: true
+  fallback_enabled: true
+  every_n_frames: 1
+  phase: 1
+
+tracker:
+  type: bytetrack
+  track_buffer: 30
+  enabled: true
+
+segmenter:
+  model: models/segformer-b0-cityscapes
+  every_n_frames: 3
+  input_size: 512
+  enabled: true
+
+depth:
+  enabled: true
+  model: models/depth-anything-v2-small-hf
+  every_n_frames: 2
+  ipm_fallback: true
+  cam_height_m: 1.2
+
+lane:
+  method: classical
+  center_x_ratio: 0.5
+  zone_top_y_ratio: 0.45
+  zone_bottom_width_ratio: 0.40
+  zone_top_width_ratio: 0.10
+  zone_top_offset_ratio: 0.0
+  dashed_support: true
+  hough_threshold: 24
+  min_line_length: 18
+  max_line_gap: 180
+  ldw_threshold_px: 30
+  ldw_release_px: 50
+  every_n_frames: 1
+  phase: 0
+  # Plan A: IPM曲線追跡を選ぶ場合の設定。classicalでは未使用。
+  ipm_source_top_y_ratio: 0.48
+  ipm_source_bottom_width_ratio: 0.90
+  ipm_source_top_width_ratio: 0.18
+  ipm_track_margin_px: 24
+  ipm_min_lane_pixels: 28
+  ipm_processing_scale: 0.50
+  # scripts/calibrate_camera.py の出力を設定する。未設定なら補正を行わない。
+  camera_matrix: null
+  distortion_coeffs: null
+  acquire_frames: 2
+  max_result_age_ms: 120
+  ipm_classical_fallback: true
+  ipm_fallback_min_confidence: 0.45
+  ipm_max_center_jump_ratio: 0.20
+  ipm_max_width_change_ratio: 0.50
+  ldw_max_offset_ratio: 3.00
+  # 赤い台形を自車レーン候補のソフトな優先情報として使う。
+  use_reference_zone: true
+
+risk:
+  ttc_critical_s: 1.5
+  ttc_warn_s: 3.0
+  follow_distance_factor: 0.7
+  ego_lane_dwell_s: 0.25
+  following_closing_mps: 0.8
+
+ui:
+  width: 1280
+  height: 800
+  max_process_width: 1280
+  analysis_fps: 0
+  analysis_start_frame: 0
+  adaptive_skip: true
+  max_schedule_lag_frames: 1.5
+  raw_preview_before_analysis: true
+  display_every_n_frames: 1
+  show_debug_mask: false
+  enable_enhancement: false
+  enable_detection: true
+  enable_lanes: true
+  enable_signs: false
+  signs_every_n_frames: 1
+  enable_risk: true

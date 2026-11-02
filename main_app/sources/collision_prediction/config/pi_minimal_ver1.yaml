@@ -1,0 +1,44 @@
+extends: default.yaml
+
+# Pi 5 最低構成 ver1
+# 目的: ラズパイ 5 CPU で実用 fps を確保しつつ主要機能は維持
+
+detector:
+  weights: models/yolo11n.pt   # 最軽量モデル
+  device: auto
+  conf: 0.18
+  iou: 0.5
+  imgsz: 320                   # YOLO 入力も 320 に合わせる
+  max_det: 60
+  every_n_frames: 5            # 5 フレに 1 回検出（間は LK 補間）
+  conf_per_class:
+    person: 0.18
+    bicycle: 0.15
+    motorcycle: 0.25
+    car: 0.32
+    bus: 0.32
+    truck: 0.32
+
+lane:
+  every_n_frames: 5
+  auto_depth: false            # 奥行きモード: 手動（スライダー値固定）
+
+segmenter:
+  enabled: false               # 路面マスク OFF（重い）
+  every_n_frames: 30
+
+depth:
+  enabled: false
+
+ui:
+  max_process_width: 320       # 処理解像度 320px
+  display_every_n_frames: 1
+  enable_enhancement: true     # 視認性補正 ON
+  enable_detection: true       # 検出/追跡 ON
+  enable_lanes: true           # 車線 ON
+  enable_signs: false          # 信号/標識 OFF
+  enable_risk: true            # 危険判定 ON
+  enable_ego_motion: true
+  enable_roi_crop: true        # ROI 推論 ON
+  show_debug_mask: false       # 路面マスク表示 OFF
+  signs_every_n_frames: 30

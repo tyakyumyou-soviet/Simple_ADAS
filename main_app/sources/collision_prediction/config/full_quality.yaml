@@ -1,0 +1,31 @@
+extends: default.yaml
+
+detector:
+  device: auto
+  imgsz: 640
+  every_n_frames: 1
+
+lane:
+  every_n_frames: 1
+
+segmenter:
+  enabled: true
+  every_n_frames: 3
+
+depth:
+  enabled: true
+  every_n_frames: 2
+
+ui:
+  max_process_width: 1280
+  display_every_n_frames: 1
+  analysis_fps: 0
+  adaptive_skip: true
+  max_schedule_lag_frames: 2.0
+  raw_preview_before_analysis: false
+  enable_enhancement: true
+  enable_detection: true
+  enable_lanes: true
+  enable_signs: true
+  signs_every_n_frames: 2
+  enable_risk: true

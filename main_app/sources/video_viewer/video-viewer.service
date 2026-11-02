@@ -1,0 +1,16 @@
+[Unit]
+Description=Video Viewer Web Server
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/video-viewer
+ExecStart=/home/pi/video-viewer/video-viewer /home/pi/video-viewer/config.json
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

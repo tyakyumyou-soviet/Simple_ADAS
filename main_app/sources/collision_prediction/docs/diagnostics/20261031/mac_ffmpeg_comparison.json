@@ -1,0 +1,29 @@
+{
+  "camera": "HD webcam-CMS-V43BK",
+  "backend": "AVFoundation/FFmpeg",
+  "requested_size": [
+    320,
+    240
+  ],
+  "requested_fps": 30,
+  "warmup_seconds": 3,
+  "dark": {
+    "frames": 251,
+    "elapsed_seconds": 14.981448000005912,
+    "received_fps": 16.687305526134814,
+    "mean_gray_32x24": 10.002391475763611
+  },
+  "bright": {
+    "frames": 377,
+    "elapsed_seconds": 15.040769208979327,
+    "received_fps": 24.998721460038645,
+    "mean_gray_32x24": 121.83767476237841
+  },
+  "notes": "User confirmed dark and bright preparation before each run. No frame duplication; no audio capture. Illumination not measured in lux. Separate capture sessions.",
+  "dark_after_restore": {
+    "frames": 251,
+    "elapsed_seconds": 14.960150791041087,
+    "received_fps": 16.71106150545708,
+    "mean_gray_32x24": 10.0
+  }
+}

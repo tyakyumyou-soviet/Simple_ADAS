@@ -1,0 +1,120 @@
+depth:
+  cam_height_m: 1.2
+  enabled: false
+  every_n_frames: 12
+  ipm_fallback: true
+  model: models/depth-anything-v2-small-hf
+detector:
+  classes:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 5
+  - 7
+  conf: 0.2
+  conf_per_class:
+    bicycle: 0.35
+    bus: 0.32
+    car: 0.2
+    motorcycle: 0.25
+    person: 0.1
+    truck: 0.32
+  device: cpu
+  enabled: true
+  every_n_frames: 6
+  phase: 1
+  adaptive_interval: true
+  watch_every_n_frames: 2
+  critical_every_n_frames: 1
+  fallback_enabled: true
+  imgsz: 320
+  iou: 0.5
+  max_det: 100
+  weights: models/hailo8/yolo26n.hef
+input:
+  camera_index: 0
+  path: data/videos/test.mp4
+  source_type: file
+lane:
+  auto_depth: false
+  center_x_ratio: 0.5
+  dashed_support: true
+  every_n_frames: 6
+  phase: 0
+  hough_threshold: 24
+  ldw_release_px: 50
+  ldw_threshold_px: 30
+  max_line_gap: 180
+  method: ipm
+  ipm_source_top_y_ratio: 0.48
+  ipm_source_bottom_width_ratio: 0.9
+  ipm_source_top_width_ratio: 0.18
+  ipm_track_margin_px: 24
+  ipm_min_lane_pixels: 28
+  ipm_processing_scale: 0.5
+  acquire_frames: 2
+  max_result_age_ms: 120
+  ipm_classical_fallback: true
+  ipm_fallback_min_confidence: 0.45
+  ipm_max_center_jump_ratio: 0.2
+  ipm_max_width_change_ratio: 0.5
+  ldw_max_offset_ratio: 3.0
+  use_reference_zone: true
+  min_line_length: 18
+  zone_bottom_width_ratio: 0.4
+  zone_top_offset_ratio: 0.0
+  zone_top_width_ratio: 0.1
+  zone_top_y_ratio: 0.63
+risk:
+  follow_distance_factor: 0.7
+  ttc_critical_s: 1.5
+  ttc_warn_s: 3.0
+  ego_lane_dwell_s: 0.25
+  following_closing_mps: 0.8
+segmenter:
+  enabled: true
+  every_n_frames: 20
+  input_size: 256
+  model: models/segformer-b0-cityscapes
+tracker:
+  enabled: true
+  track_buffer: 30
+  type: bytetrack
+ui:
+  show_ai_depth_preview: false
+  adaptive_skip: true
+  analysis_fps: 0
+  analysis_start_frame: 0
+  display_every_n_frames: 1
+  display_max_width: 360
+  enable_detection: true
+  enable_ego_motion: true
+  enable_enhancement: true
+  enable_lanes: true
+  enable_motion_skip: true
+  enable_risk: true
+  enable_roi_crop: false
+  enable_signs: false
+  height: 800
+  max_process_width: 320
+  max_schedule_lag_frames: 1.5
+  motion_threshold: 1.0
+  overlay_size_scale: 2.0
+  overlay_thickness_scale: 0.5
+  raw_preview_before_analysis: true
+  realtime_priority: true
+  roi_mode: rectangle
+  roi_rect:
+    x_ratio: 0.0
+    y_ratio: 0.24
+    w_ratio: 1.0
+    h_ratio: 0.55
+  show_debug_mask: false
+  signs_every_n_frames: 2
+  width: 1280
+  enable_blind_check: true
+hailo_scene:
+  depth_enabled: true
+  depth_model: models/hailo8/scdepthv3.hef
+  every_n_frames: 12

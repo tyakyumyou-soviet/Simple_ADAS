@@ -1,0 +1,12 @@
+extends: pi_minimal_ver1.yaml
+
+# INT8 TFLite (CPU) プロファイル
+# 用途: Mac / Pi の CPU で INT8 量子化モデルの精度・速度を検証する。
+#       Coral 用 *_edgetpu.tflite と同一の量子化重みなので、Coral 投入前の
+#       精度判断をハードなしで行える。
+# 前提: フェーズ A3 で models/yolo11n_full_integer_quant.tflite を生成済みであること。
+
+detector:
+  weights: models/yolo11n_full_integer_quant.tflite
+  device: cpu          # .tflite は MPS 非対応 (コード側でも cpu に強制される)
+  imgsz: 320           # tflite はエクスポート時の imgsz に固定される (320 で生成)

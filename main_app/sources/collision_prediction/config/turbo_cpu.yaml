@@ -1,0 +1,20 @@
+extends: realtime_cpu.yaml
+
+detector:
+  conf: 0.4
+  imgsz: 320
+  max_det: 30
+  every_n_frames: 1
+
+lane:
+  every_n_frames: 1
+
+ui:
+  max_process_width: 540
+  display_every_n_frames: 1
+  enable_enhancement: false
+  enable_detection: true
+  enable_lanes: true
+  enable_signs: false
+  signs_every_n_frames: 30
+  enable_risk: true

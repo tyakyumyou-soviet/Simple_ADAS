@@ -1,0 +1,27 @@
+extends: custom4_ai_hat_scene.yaml
+input:
+  camera_width: 320
+  camera_height: 240
+  camera_fps: 30
+  camera_buffers: 4
+  video_mode: realtime
+detector:
+  update_hz: 15.0
+  weights: models/hailo8/yolo26s.hef
+lane:
+  update_hz: 15.0
+  max_result_age_ms: 400
+hailo_scene:
+  depth_enabled: true
+  depth_update_hz: 1.6666666666666667
+ui:
+  roi_mode: 'off'
+  enable_roi_crop: false
+  show_ai_depth_preview: false
+  async_preview: true
+  independent_schedule: true
+  display_fps: 30
+  result_max_age_ms: 500
+  max_process_width: 960
+  display_max_width: 360
+  curve_lanes: true

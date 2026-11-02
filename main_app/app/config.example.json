@@ -1,0 +1,15 @@
+{
+  "recorder_command": [
+    "../sources/dashcam/target/release/dashcam_rust_viewer_layout"
+  ],
+  "recorder_working_directory": "../sources/dashcam",
+  "auto_start_recorder": true,
+  "adas_command": [],
+  "sensor_adapter": "none",
+  "storage_path": "../sources/dashcam/videos",
+  "development_tools": false,
+  "allow_os_shutdown": false,
+  "voice_profiles": [],
+  "transfer_network_mode": "lan",
+  "transfer_timeout_seconds": 900
+}

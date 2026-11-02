@@ -1,0 +1,40 @@
+extends: default.yaml
+
+detector:
+  device: auto   # mps が使えれば mps、ダメなら cpu
+  conf: 0.18     # YOLO 出力時の最小値（人/自転車も拾うため）
+  imgsz: 480
+  max_det: 120
+  every_n_frames: 1
+  # クラス別の確定 conf（YOLO 出力後にこの閾値で再フィルタ）
+  conf_per_class:
+    person: 0.18
+    bicycle: 0.15
+    motorcycle: 0.25
+    car: 0.32
+    bus: 0.32
+    truck: 0.32
+
+lane:
+  every_n_frames: 1
+
+segmenter:
+  enabled: true       # 路面マスク表示と車線なし道フォールバックに必要
+  every_n_frames: 18
+  input_size: 256
+
+depth:
+  enabled: false
+  every_n_frames: 12
+
+ui:
+  max_process_width: 960
+  display_every_n_frames: 1
+  enable_enhancement: false   # 視認性補正 OFF
+  enable_detection: true      # 検出/追跡 ON
+  enable_lanes: true          # 車線/LDW ON
+  enable_signs: false         # 信号/標識 OFF
+  signs_every_n_frames: 2
+  enable_risk: true           # 危険判定 ON
+  enable_ego_motion: true     # 誤検出抑制のため裏方で常時 ON
+  show_debug_mask: true       # 路面マスク ON

@@ -1,0 +1,9 @@
+{
+  "video_dir": "../dashcam/videos",
+  "port": 8080,
+  "host": "127.0.0.1",
+  "folders": [
+    { "name": "フロント", "path": "front" },
+    { "name": "リア", "path": "rear" }
+  ]
+}

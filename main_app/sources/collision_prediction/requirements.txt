@@ -1,0 +1,31 @@
+# Inference
+ultralytics>=8.3.0
+lap>=0.5.12
+torch>=2.2.0
+torchvision>=0.17.0
+transformers>=4.40.0
+huggingface_hub>=0.23.0
+# 外部モデル用 (YOLOX / NanoDet)
+onnxruntime>=1.17.0
+# 外部モデル用 (EfficientDet-Lite0 TFLite); 重い tensorflow を入れずに済む
+tflite-runtime>=2.14.0; sys_platform != "darwin"
+tensorflow>=2.14.0; sys_platform == "darwin"
+
+# Image processing
+opencv-python>=4.9.0
+numpy>=1.26.0
+Pillow>=10.2.0
+scikit-image>=0.22.0
+
+# UI
+PySide6>=6.6.0
+
+# Utilities
+pyyaml>=6.0
+loguru>=0.7.0
+pandas>=2.2.0
+
+# Development
+pytest>=8.0.0
+ruff>=0.4.0
+mypy>=1.10.0

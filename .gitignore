@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+target/
+videos/
+models/
+*.log
+main_app/app/config.json
+main_app/app/config.pi.json
