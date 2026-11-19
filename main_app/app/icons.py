@@ -43,6 +43,46 @@ def _draw_icon(name: str, color: str) -> QPixmap:
         outline.closeSubpath()
         painter.drawPath(outline)
         painter.drawEllipse(QRectF(9, 10, 6, 6))
+    elif name == "alert_person":
+        painter.drawEllipse(QRectF(9, 2, 6, 6))
+        painter.drawLine(QPointF(12, 8), QPointF(12, 15))
+        painter.drawLine(QPointF(12, 10), QPointF(6, 14))
+        painter.drawLine(QPointF(12, 10), QPointF(18, 14))
+        painter.drawLine(QPointF(12, 15), QPointF(7, 22))
+        painter.drawLine(QPointF(12, 15), QPointF(17, 22))
+    elif name == "alert_vehicle":
+        path = QPainterPath()
+        path.moveTo(4, 14)
+        path.lineTo(6, 8)
+        path.lineTo(18, 8)
+        path.lineTo(20, 14)
+        path.lineTo(20, 19)
+        path.lineTo(4, 19)
+        path.closeSubpath()
+        painter.drawPath(path)
+        painter.drawLine(QPointF(4, 14), QPointF(20, 14))
+        painter.drawLine(QPointF(7, 19), QPointF(7, 21))
+        painter.drawLine(QPointF(17, 19), QPointF(17, 21))
+    elif name == "alert_lane":
+        painter.drawLine(QPointF(3, 22), QPointF(9, 2))
+        painter.drawLine(QPointF(21, 22), QPointF(15, 2))
+        painter.drawLine(QPointF(12, 3), QPointF(12, 7))
+        painter.drawLine(QPointF(12, 11), QPointF(12, 15))
+        painter.drawLine(QPointF(12, 19), QPointF(12, 22))
+    elif name == "alert_obstacle":
+        painter.drawRoundedRect(QRectF(4, 9, 16, 11), 2, 2)
+        painter.drawLine(QPointF(8, 9), QPointF(8, 6))
+        painter.drawLine(QPointF(16, 9), QPointF(16, 6))
+        painter.drawLine(QPointF(8, 14), QPointF(16, 14))
+    elif name == "alert_unknown":
+        path = QPainterPath()
+        path.moveTo(12, 2)
+        path.lineTo(22, 21)
+        path.lineTo(2, 21)
+        path.closeSubpath()
+        painter.drawPath(path)
+        painter.drawLine(QPointF(12, 8), QPointF(12, 14))
+        painter.drawPoint(QPointF(12, 18))
     elif name == "settings":
         painter.drawEllipse(QRectF(6, 6, 12, 12))
         painter.drawEllipse(QRectF(10, 10, 4, 4))
@@ -76,3 +116,9 @@ def button_icon(name: str) -> QIcon:
     icon.addPixmap(_draw_icon(name, "#edf4f6"), QIcon.Mode.Normal)
     icon.addPixmap(_draw_icon(name, "#a4b3bc"), QIcon.Mode.Disabled)
     return icon
+
+
+def warning_icon(category: str, color: str) -> QIcon:
+    names = {"人": "alert_person", "車両": "alert_vehicle", "車線": "alert_lane",
+             "障害物": "alert_obstacle", "自転車": "alert_obstacle"}
+    return QIcon(_draw_icon(names.get(category, "alert_unknown"), color))

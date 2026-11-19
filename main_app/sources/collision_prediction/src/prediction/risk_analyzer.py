@@ -203,10 +203,20 @@ class RiskAnalyzer:
         side_entry = self._is_side_entry_risk(track, ctx, relative_velocity)
         # 自転車は専用ラベル、それ以外は歩行者ラベル
         subject = "自転車" if track.cls == "bicycle" else "歩行者"
-        if dwelling and not leaving:
-            alerts.append(self._track_alert(f"{track.cls}_collision", 3, track, ctx, f"{subject}衝突注意"))
-        elif rushing or side_entry:
+        ttc_value = self.ttc.update(track.track_id, ctx.timestamp, track.distance_m, bbox_area(track.bbox))
+        if rushing or side_entry:
             alerts.append(self._track_alert(f"{track.cls}_rush", 3, track, ctx, f"{subject}飛び出し注意"))
+        elif dwelling and not leaving:
+            # 接近時間が十分にある場合は黄。推定不能なら危険側の赤を維持する。
+            if ttc_value is not None and np.isfinite(ttc_value) and self.ttc_critical_s < ttc_value <= 120.0:
+                alerts.append(self._track_alert(f"{track.cls}_collision", 2, track, ctx, f"{subject}に注意"))
+            else:
+                alerts.append(self._track_alert(f"{track.cls}_collision", 3, track, ctx, f"{subject}衝突注意"))
+        elif (track.cls == "person" and track.confirmed and not leaving
+              and track.track_id in self._ego_lane_entered_at
+              and self._dwell_seconds(track.track_id, ctx.timestamp) >= min(.10, self.ego_lane_dwell_s * .5)):
+            # 確認済みの人物が進路に入り、赤の滞在条件に達する前は注意（黄）。
+            alerts.append(self._track_alert("person_caution", 2, track, ctx, "歩行者に注意"))
         return alerts
 
     @staticmethod

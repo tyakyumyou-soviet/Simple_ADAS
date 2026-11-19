@@ -1,0 +1,117 @@
+{
+  "model": "opencv_fisheye",
+  "image_size": [
+    320,
+    240
+  ],
+  "K": [
+    [
+      175.16137169047818,
+      0.0,
+      173.6590139007943
+    ],
+    [
+      0.0,
+      175.10946707289838,
+      121.09561892691502
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "D": [
+    -0.03560237449988432,
+    0.08168100635954366,
+    -0.14118909553020834,
+    0.07318923034365032
+  ],
+  "rms_px": 0.16960715497245052,
+  "views": [
+    {
+      "file": "central_01.png",
+      "rms_px": 0.1682159104651987
+    },
+    {
+      "file": "diagonal_lower_left_20.png",
+      "rms_px": 0.2934754151614707
+    },
+    {
+      "file": "diagonal_lower_right_18.png",
+      "rms_px": 0.21565936332119215
+    },
+    {
+      "file": "diagonal_upper_left_17.png",
+      "rms_px": 0.1661107221221083
+    },
+    {
+      "file": "diagonal_upper_right_19.png",
+      "rms_px": 0.1392765994004714
+    },
+    {
+      "file": "distant_10.png",
+      "rms_px": 0.05711509019776683
+    },
+    {
+      "file": "left_02.png",
+      "rms_px": 0.1507605964726325
+    },
+    {
+      "file": "lower_05.png",
+      "rms_px": 0.16434707704601084
+    },
+    {
+      "file": "lower_left_tilted_14.png",
+      "rms_px": 0.11850239533085337
+    },
+    {
+      "file": "lower_right_tilted_13.png",
+      "rms_px": 0.10089957484680827
+    },
+    {
+      "file": "right_03.png",
+      "rms_px": 0.11764978411783089
+    },
+    {
+      "file": "rotated_15.png",
+      "rms_px": 0.17928779819321963
+    },
+    {
+      "file": "rotated_opposite_16.png",
+      "rms_px": 0.10037177519310034
+    },
+    {
+      "file": "tilted_left_06.png",
+      "rms_px": 0.1313701338006804
+    },
+    {
+      "file": "tilted_lower_09.png",
+      "rms_px": 0.23499409669827157
+    },
+    {
+      "file": "tilted_right_07.png",
+      "rms_px": 0.20017801840743688
+    },
+    {
+      "file": "tilted_upper_08.png",
+      "rms_px": 0.2547603997717578
+    },
+    {
+      "file": "upper_04.png",
+      "rms_px": 0.15861961696336752
+    },
+    {
+      "file": "upper_left_tilted_11.png",
+      "rms_px": 0.13673179217685952
+    },
+    {
+      "file": "upper_right_tilted_12.png",
+      "rms_px": 0.11319428639462226
+    }
+  ],
+  "square_unit": "one displayed square; physical scale not measured",
+  "applied": true,
+  "camera_device": "/dev/v4l/by-id/usb-AONI_HD_webcam-CMS-V43BK-video-index0",
+  "same_fov_required": true
+}

@@ -18,7 +18,7 @@ DIRECTIONS = {"左": "左", "左前": "左", "右": "右", "右前": "右", "中
 VEHICLES = {"car", "truck", "bus", "motorcycle"}
 
 
-def adapt_alert(alert, target_classes: Mapping[int, str] | None = None) -> DisplayAlert:
+def adapt_alert(alert, target_classes: Mapping[int, str] | None = None, *, reverse_view=False) -> DisplayAlert:
     kind = str(alert.kind)
     target_id = alert.target_id
     target_class = (target_classes or {}).get(target_id, "")
@@ -36,8 +36,15 @@ def adapt_alert(alert, target_classes: Mapping[int, str] | None = None) -> Displ
         category = "不明"
     level = int(alert.level)
     color = {1: "情報", 2: "黄色", 3: "赤色"}.get(level, "不明")
-    return DisplayAlert(kind, category, level, color,
-                        DIRECTIONS.get(alert.direction, "不明"), str(alert.message), target_id)
+    direction = DIRECTIONS.get(alert.direction, "不明")
+    message = str(alert.message)
+    if reverse_view:
+        swapped = {"左": "右", "右": "左", "左前": "右前", "右前": "左前"}
+        new_direction = swapped.get(direction, direction)
+        if direction != "不明":
+            message = message.replace(direction, new_direction)
+        direction = new_direction
+    return DisplayAlert(kind, category, level, color, direction, message, target_id)
 
 
 def sides_for_alert(alert: DisplayAlert) -> frozenset[str]:

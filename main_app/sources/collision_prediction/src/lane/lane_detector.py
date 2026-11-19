@@ -372,12 +372,12 @@ class LaneDetector:
             self._ldw_active = True
             return Alert("ldw", 3, None,
                           f"⚠ 車線逸脱 ({direction}方向 {int(ratio*100)}%)",
-                          None, direction)
+                          None)
         if self._ldw_warn_streak >= 3:
             self._ldw_active = True
             return Alert("ldw", 2, None,
                           f"車線寄り注意 ({direction}側 {int(ratio*100)}%)",
-                          None, direction)
+                          None)
         return None
 
 

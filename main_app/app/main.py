@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
 from main_window import MainWindow
+from input_focus import InputFocusController
 
 
 def main() -> int:
@@ -14,8 +15,9 @@ def main() -> int:
     args = parser.parse_args()
     app = QApplication(sys.argv[:1])
     app.setApplicationName("車載統合システム")
+    input_focus_controller = InputFocusController(app)
     window = MainWindow(config_path=args.config)
-    if window.runtime.config.get("fullscreen", False):
+    if window.fullscreen_enabled:
         window.showFullScreen()
     else:
         window.show()
